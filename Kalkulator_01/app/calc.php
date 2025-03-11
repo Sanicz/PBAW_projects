@@ -41,9 +41,9 @@ if (empty( $messages )) {
         elseif ($termin<1||$termin>420){
             $messages []= 'Bledna termin';
         }
-    if (! is_numeric( $procentowanie )) {
-        $messages [] = 'Procentowanie nie jest liczbą';
-    }
+    	if (! is_numeric( $procentowanie )) {
+        	$messages [] = 'Procentowanie nie jest liczbą';
+    	}
         elseif ($procentowanie<0||$procentowanie>700){
             $messages []= 'Bledna procentowanie';
         }

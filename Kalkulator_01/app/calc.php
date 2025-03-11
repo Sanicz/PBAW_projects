@@ -25,30 +25,28 @@ if ( $procentowanie == "") {
 }
 
 
-if(is_numeric($kwota)&&($kwota<1000||$kwota>5000000)){
-    $messages []= 'Bledna kwota';
-}
-if(is_numeric($termin)&&($termin<1||$termin>420)){
-    $messages []= 'Bledny termin';
-}
-if(is_numeric($procentowanie)&&($procentowanie<0||$procentowanie>700)){
-    $messages []= 'Bledne wprowadzone procentowanie';
-}
 
 if (empty( $messages )) {
 
-//wedlug informacji dotyczacej limitow kredytowych znalazlem iz minimalny termin wynosi 1 miesiac a maksymalny okolo 420
-    //procentowanie naprzyklad dla nowych uzytkownikow banku wynosi 0%
 	if (! is_numeric( $kwota )) {
-		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
+		$messages [] = 'Kwota nie jest liczbą całkowitą';
 	}
+        elseif ($kwota<1000||$kwota>5000000){
+            $messages []= 'Bledna kwota';
+        }
 	
 	if (! is_numeric( $termin )) {
-		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
+		$messages [] = 'Termin nie jest liczbą całkowitą';
 	}
+        elseif ($termin<1||$termin>420){
+            $messages []= 'Bledna termin';
+        }
     if (! is_numeric( $procentowanie )) {
-        $messages [] = 'Trzecia wartość nie jest liczbą całkowitą';
+        $messages [] = 'Procentowanie nie jest liczbą';
     }
+        elseif ($procentowanie<0||$procentowanie>700){
+            $messages []= 'Bledna procentowanie';
+        }
 
 }
 

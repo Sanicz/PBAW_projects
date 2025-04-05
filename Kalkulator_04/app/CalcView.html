@@ -1,0 +1,53 @@
+{extends file="../templates/main.html"}
+{block name=main} 
+            <header>
+                <h2></h2>
+                <p></p>
+            </header>
+            <form method="post" action="http://localhost/Kalkulator_04/app/calc.php" id="myForm"  >
+                <div class="row gtr-uniform gtr-50">
+                    <div class="col-4 col-12-xsmall">
+                       
+                        <input type="text" name="kwota" id="id_kwota" placeholder="Kwota" value="{$form->kwota}" /></div>
+                    <div class="col-4 col-12-xsmall">
+                        <input type="text" name="termin" id="id_termin" placeholder="Termin" value="{$form->termin}"/></div>
+                    <div class="col-4 col-12-xsmall">
+                        <input type="text" name="procentowanie" id="id_procentowanie" placeholder="Procentowanie" value="{$form->procentowanie}"/></div>
+                        <div class="col-12 col-12-xsmall"><input type="submit" value="Oblicz"  class="fit primary" /></div>
+                </div>
+            </form>
+            
+            <div class="col-4 col-12-xsmall">
+                    
+                    {if $msgs->isError()} 
+                        <h4>Wystąpiły błędy: </h4>
+                        <ul class="err">
+                        {foreach  $msgs->getErrors() as $msg}
+                        {strip}
+                            <li>{$msg}</li>
+                        {/strip}
+                        {/foreach}
+                        </ul>
+                    {/if}
+               
+                {if $msgs->isInfo()}
+                    
+                        <h4>Informacje: </h4>
+                        <ul class="inf">
+                        {foreach  $msgs->getInfos() as $msg}
+                        {strip}
+                            <li>{$msg}</li>
+                        {/strip}
+                        {/foreach}
+                        </ul>
+                    
+                {/if}
+
+                {if isset($res->result)}
+                    <h4>Wynik</h4>
+                    <p class="res">
+                    {$res->result}
+                    </p>
+                {/if}   
+        </div>         
+{/block}
